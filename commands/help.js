@@ -9,9 +9,9 @@ module.exports = {
         .setDescription('`-` Is Prefix')
         .addFields(
             {name: 'Get Link', value: '`youtube` | `website` | `github`'},
-            {name: 'Moderation', value: '`clear` | `Kick` | `Ban` | `Mute` | `Unmute`'},
+            {name: 'Moderation', value: '`clear` | `Kick` | `Ban` | `Mute` | `Unmute` | `clearchannel`'},
             {name: 'Music', value: '`play` | `stop` | `queue` | `skip`'},
-            {name: 'Utility', value: '`ping` | `join` | `invite` | `suggestions`'},
+            {name: 'Utility', value: '`ping` | `join` | `invite` | `suggestions` | `server`'},
             {name: 'Fun', value: '`meme` | `calculator` | `image`'}
         )
         .setFooter('More Command soon')

@@ -4,7 +4,7 @@ module.exports = {
     name: 'unmute',
     execute(client, message, cmd, args, Discord) {
         const target = message.mentions.users.first();
-        if (message.member.permissions.has("KICK_MEMBERS")) {
+        if (message.member.permissions.has("ADMINISTRATOR")) {
             if (target) {
                 let mainRole = message.guild.roles.cache.find(role => role.name === 'member');
                 let muteRole = message.guild.roles.cache.find(role => role.name === 'mute');
