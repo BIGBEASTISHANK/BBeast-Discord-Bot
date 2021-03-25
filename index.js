@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 require('dotenv').config();
+const prefix = process.env.PREFIX;
+const keepAlive = require("./server");
+
 
 const poll = require('./commands/general/poll')
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
@@ -12,8 +15,9 @@ client.events = new Discord.Collection();
 })
 
 client.on("ready", () =>{
-    client.user.setPresence({ activity: { name: `-help | ${client.guilds.cache.size} guilds`, type: "LISTENING"  }, status: 'online' })
+    client.user.setPresence({ activity: { name: `${prefix}help | ${client.guilds.cache.size} guilds`, type: "LISTENING"  }, status: 'online' })
     poll(client)
 })
 
-client.login(process.env.DISCORD_TOKEN);
+keepAlive();
+client.login(process.env.TOKEN);

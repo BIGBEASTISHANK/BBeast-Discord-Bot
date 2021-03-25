@@ -8,7 +8,7 @@ module.exports = {
                 const memberTarget = message.guild.members.cache.get(target.id);
                 memberTarget.ban();
                 message.channel.send({
-                    embed: { color: `#00f2ff`, description: 'User have been banned' }
+                    embed: { color: `#00f2ff`, description: `${memberTarget} have been banned` }
                 })
             } else {
                 message.channel.send({

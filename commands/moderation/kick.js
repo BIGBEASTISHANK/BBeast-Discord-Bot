@@ -8,7 +8,7 @@ module.exports = {
             const memberTarget = message.guild.members.cache.get(target.id);
             memberTarget.kick();
             message.channel.send({
-                embed: { color: `#00f2ff`, description: `User have been kicked`} 
+                embed: { color: `#00f2ff`, description: `${memberTarget} have been kicked`} 
             })
         }else{
             message.channel.send({

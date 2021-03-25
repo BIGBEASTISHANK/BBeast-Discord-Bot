@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'invitetrack',
+    name: 'invite',
     execute(client, message, cmd, args, Discord) {
         if (message.member.permissions.has("MANAGE_MESSAGES")) {
             const { guild } = message
