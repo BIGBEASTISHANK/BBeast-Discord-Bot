@@ -1,8 +1,8 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
 module.exports = {
     name: 'queue',
     aliases: ['que'],
+    permissions: [],
+    cooldown: 0,
     execute(client, message, cmd, args, Discord){
         const newEmbed = new Discord.MessageEmbed()
         .setColor('#00f2ff')

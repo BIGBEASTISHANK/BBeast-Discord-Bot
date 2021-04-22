@@ -1,35 +1,37 @@
 module.exports = {
     name: 'createtextchannel',
     aliases: ['ctc'],
-    execute(client, message, cmd, args, discord) {
-        if (message.member.hasPermission('MANAGE_CHANNELS')) {
-            if (cmd === 'createtextchannel') {
-                const name = message.content.replace('-createtextchannel', '')
+    permissions: ["MANAGE_CHANNELS"],
+    cooldown: 0,
+    execute(client, message, cmd, args, Discord) {
 
-                message.guild.channels
-                    .create(name, {
-                        type: 'text',
-                    })
-                    .then((channel) => {
-                        const categoryId = message.channel.parentID
-                        channel.setParent(categoryId)
-                        message.channel.send({ embed: { color: `#00f2ff`, description: `Text Channel **${name}** have been created!` } })
-                    })
-            } else if (cmd === 'ctc') {
-                const name = message.content.replace('-ctc', '')
+        require('dotenv').config();
+        const prefix = process.env.PREFIX
 
-                message.guild.channels
-                    .create(name, {
-                        type: 'text',
-                    })
-                    .then((channel) => {
-                        const categoryId = message.channel.parentID
-                        channel.setParent(categoryId)
-                        message.channel.send({ embed: { color: `#00f2ff`, description: `Text Channel **${name}** have been created!` } })
-                    })
-            }
-        } else {
-            message.channel.send({ embed: { color: `#00f2ff`, description: 'You are missing `MANAGE CHANNELS` permission' } })
+        if (cmd === 'createtextchannel') {
+            const name = message.content.replace(`${prefix}createtextchannel`, '')
+
+            message.guild.channels
+                .create(name, {
+                    type: 'text',
+                })
+                .then((channel) => {
+                    const categoryId = message.channel.parentID
+                    channel.setParent(categoryId)
+                    message.channel.send({ embed: { color: `#00f2ff`, description: `Text Channel **${name}** have been created!` } })
+                })
+        } else if (cmd === 'ctc') {
+            const name = message.content.replace(`${prefix}ctc`, '')
+
+            message.guild.channels
+                .create(name, {
+                    type: 'text',
+                })
+                .then((channel) => {
+                    const categoryId = message.channel.parentID
+                    channel.setParent(categoryId)
+                    message.channel.send({ embed: { color: `#00f2ff`, description: `Text Channel **${name}** have been created!` } })
+                })
         }
     }
 }

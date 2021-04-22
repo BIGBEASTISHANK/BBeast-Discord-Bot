@@ -1,8 +1,7 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
 module.exports = {
     name: 'ping',
-    description: 'Bot ping',
+    permissions: [],
+    cooldown: 10,
     execute(client, message, cmd, args, Discord){
 
         message.channel.send({

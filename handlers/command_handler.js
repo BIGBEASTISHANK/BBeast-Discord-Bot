@@ -8,10 +8,10 @@ module.exports = (client, Discord) => {
             const command = require(`../commands/${dirs}/${file}`);
             if (command.name) {
                 client.command.set(command.name, command);
-            } else {
+            }else {
                 continue;
             }
         }
     }
-    ['general', 'help', 'fun', 'moderation', 'music', 'utility', 'owner'].forEach(e => load_dir(e));
+    ['general', 'help', 'fun', 'moderation', 'music', 'utility', 'owner', 'economy', 'testing', 'image'].forEach(e => load_dir(e));
 }
