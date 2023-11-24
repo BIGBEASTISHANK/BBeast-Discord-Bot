@@ -132,7 +132,7 @@ async def help_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
 
         # Variable
-        description = '**<:invite:822410792804417567> [ Invite](https://top.gg/bot/709984874924081174/)** | **<:support:822410788773691392> [ Support Server](https://bigbeastishank.com/discord)** |  **<:sourecode:822410789122080768> [ Source Code](https://github.com/BIGBEASTISHANK/discord.py)** | **<:vote:826728613663342642> [ Vote](https://top.gg/bot/709984874924081174/vote)**'
+        description = '**<:invite:822410792804417567> [ Invite](https://top.gg/bot/709984874924081174/)** | **<:support:822410788773691392> [ Support Server](https://bigbeastishank.com/discord)** |  **<:sourecode:822410789122080768> [ Source Code](https://github.com/BIGBEASTISHANK/BBeast-Discord-Bot/tree/python)** | **<:vote:826728613663342642> [ Vote](https://top.gg/bot/709984874924081174/vote)**'
 
         # Header
         embed = discord.Embed(
