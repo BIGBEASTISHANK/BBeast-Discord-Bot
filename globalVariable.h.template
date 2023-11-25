@@ -1,0 +1,13 @@
+#pragma once
+
+// Includes
+#include <iostream>
+
+// Namespace
+namespace bbGlobalVariable
+{
+    // Variables
+    const std::string TOKEN = ""; // enter your bot token
+
+    const int EMBED_COLOR = 0x00f2ff; // Insted of 0x00f2ff insert your emebd color
+}
