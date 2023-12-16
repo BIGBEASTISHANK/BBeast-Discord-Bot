@@ -1,13 +1,20 @@
 #pragma once
 
 // Includes
+#include <ctime>
+#include <dpp/dpp.h>
+#include <iomanip>
 #include <iostream>
+#include <sstream>
 
 // Namespace
-namespace bbGlobalVariable
-{
-    // Variables
-    const std::string TOKEN = ""; // enter your bot token
+namespace bbGlobalVariable {
+// Variables
+const std::string TOKEN =
+    "you troken here";
 
-    const int EMBED_COLOR = 0x00f2ff; // Insted of 0x00f2ff insert your emebd color
-}
+const int EMBED_COLOR = 0x00f2ff;
+
+std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+const time_t CurrentTime = std::chrono::system_clock::to_time_t(now);
+} // namespace bbGlobalVariable
