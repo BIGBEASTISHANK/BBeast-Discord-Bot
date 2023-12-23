@@ -1,0 +1,16 @@
+module.exports = {
+    name: '',
+    aliases: [''],
+    permissions: [],
+    cooldown: 0,
+    async execute(client, message, cmd, args, Discord) {
+
+    }
+};
+
+slash: true,
+testOnly: true,
+description: '',
+callback: ({}) => {
+  
+}
