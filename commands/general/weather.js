@@ -6,6 +6,7 @@ module.exports = {
     permissions: [],
     cooldown: 0,
     async execute(client, message, cmd, args, Discord) {
+<<<<<<< HEAD
         
         weather.find({ search: args.join(" "), degreeType: 'C' }, function (error, result) {
             if (!args[0]) return message.channel.send({ embed: { color: `#00f2ff`, description: 'Please specify a location' } })
@@ -17,6 +18,18 @@ module.exports = {
 
             const weatherinfo = new Discord.MessageEmbed()
                 .setColor('#00f2ff')
+=======
+        weather.find({ search: args.join(" "), degreeType: 'C' }, function (error, result) {
+            if (!args[0]) return message.channel.send({ embed: { color: `#DC143C`, description: 'Please specify a location' } })
+
+            if (result === undefined || result.length === 0) returnmessage.channel.send({ embed: { color: `#DC143C`, description: `**Invalid** location! Give a place or state!` } });
+
+            var current = result[0].current;
+            var location = result[0].location;
+
+            const weatherinfo = new Discord.MessageEmbed()
+                .setColor('#DC143C')
+>>>>>>> jsmerge
                 .setDescription(`**${current.skytext}**`)
                 .setAuthor(`Weather forecast for ${current.observationpoint}`)
                 .setThumbnail(current.imageUrl)

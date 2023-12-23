@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   
 const mongoose = require('mongoose')
 
@@ -15,4 +16,23 @@ const economy = mongoose.Schema({
   },
 })
 
+=======
+  
+const mongoose = require('mongoose')
+
+const reqString = {
+  type: String,
+  required: true,
+}
+
+const economy = mongoose.Schema({
+  guildId: reqString,
+  userId: reqString,
+  bbics: {
+    type: Number,
+    required: true,
+  },
+})
+
+>>>>>>> jsmerge
 module.exports = mongoose.model('economy', economy)

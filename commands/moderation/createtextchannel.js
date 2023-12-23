@@ -18,7 +18,11 @@ module.exports = {
                 .then((channel) => {
                     const categoryId = message.channel.parentID
                     channel.setParent(categoryId)
+<<<<<<< HEAD
                     message.channel.send({ embed: { color: `#00f2ff`, description: `Text Channel **${name}** have been created!` } })
+=======
+                    message.channel.send({ embed: { color: `RANDOM`, description: `Text Channel **${name}** have been created!` } })
+>>>>>>> jsmerge
                 })
         } else if (cmd === 'ctc') {
             const name = message.content.replace(`${prefix}ctc`, '')
@@ -30,7 +34,11 @@ module.exports = {
                 .then((channel) => {
                     const categoryId = message.channel.parentID
                     channel.setParent(categoryId)
+<<<<<<< HEAD
                     message.channel.send({ embed: { color: `#00f2ff`, description: `Text Channel **${name}** have been created!` } })
+=======
+                    message.channel.send({ embed: { color: `RANDOM`, description: `Text Channel **${name}** have been created!` } })
+>>>>>>> jsmerge
                 })
         }
     }

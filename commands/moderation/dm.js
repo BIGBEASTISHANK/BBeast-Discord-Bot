@@ -12,6 +12,7 @@ module.exports = {
             message.mentions.members.first() ||
             message.guild.members.cache.get(args[0]);
         if (!user)
+<<<<<<< HEAD
             return message.channel.send({ embed: { color: `#00f2ff`, description: `You did not mention a user, or you gave an invalid id` } });
         if (!args.slice(1).join(" "))
             return message.channel.send({ embed: { color: `#00f2ff`, description: "You did not specify your message" } });
@@ -19,5 +20,14 @@ module.exports = {
             .send(args.slice(1).join(" "))
             .catch(() => message.channel.send({ embed: { color: `#00f2ff`, description: "That user could not be DMed!" } }))
             .then(() => message.channel.send({ embed: { color: `#00f2ff`, description: `Sent a message to ${user.user.tag}` } }));
+=======
+            return message.channel.send({ embed: { color: `RANDOM`, description: `You did not mention a user, or you gave an invalid id` } });
+        if (!args.slice(1).join(" "))
+            return message.channel.send({ embed: { color: `RANDOM`, description: "You did not specify your message" } });
+        user.user
+            .send(args.slice(1).join(" "))
+            .catch(() => message.channel.send({ embed: { color: `RANDOM`, description: "That user could not be DMed!" } }))
+            .then(() => message.channel.send({ embed: { color: `RANDOM`, description: `Sent a message to ${user.user.tag}` } }));
+>>>>>>> jsmerge
     },
 };

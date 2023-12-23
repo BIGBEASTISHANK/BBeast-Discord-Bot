@@ -13,9 +13,15 @@ module.exports = {
         const toconfess = args.join(' ')
         const { member } = message
 
+<<<<<<< HEAD
         if (member.id === '599883476522631178') {
             if (split.length < 2) {
                 message.channel.send({ embed: { color: `#00f2ff`, description: 'Plese give a command my Boss :wink: !' } })
+=======
+        if (member.id === '487196022578085892') {
+            if (split.length < 2) {
+                message.channel.send({ embed: { color: `RANDOM`, description: 'Plese give a command my Boss :wink: !' } })
+>>>>>>> jsmerge
                 return;
             }
         } else {
@@ -23,7 +29,11 @@ module.exports = {
         }
 
         if (cmd === 'eval') {
+<<<<<<< HEAD
             const ownerId = '599883476522631178'
+=======
+            const ownerId = '487196022578085892'
+>>>>>>> jsmerge
             const { member, channel, content } = message
 
             if (member.id === ownerId) {
@@ -32,7 +42,11 @@ module.exports = {
             }
         }
         if (cmd === 'e') {
+<<<<<<< HEAD
             const ownerId = '599883476522631178'
+=======
+            const ownerId = '487196022578085892'
+>>>>>>> jsmerge
             const { member, channel, content } = message
 
             if (member.id === ownerId) {

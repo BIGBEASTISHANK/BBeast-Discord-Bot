@@ -13,7 +13,11 @@ module.exports = {
 
         const noArgs = new Discord.MessageEmbed()
             .setTitle('Missing arguments')
+<<<<<<< HEAD
             .setColor('#00f2ff')
+=======
+            .setColor('#DC143C')
+>>>>>>> jsmerge
             .setDescription(`You are missing some args (ex: ${prefix}covid all || ${prefix}covid India)`)
             .setTimestamp()
 
@@ -28,7 +32,12 @@ module.exports = {
                     let deaths = data.deaths.value.toLocaleString()
 
                     const embed = new Discord.MessageEmbed()
+<<<<<<< HEAD
                         .setTitle(`Worldwide COVID-19 Stats 🌎`)
+=======
+                        .setTitle(`Worldwide COVID-19 Stats :map:`)
+                        .setColor('#DC143C')
+>>>>>>> jsmerge
                         .addField('Confirmed Cases', confirmed)
                         .addField('Recovered', recovered)
                         .addField('Deaths', deaths)
@@ -45,6 +54,10 @@ module.exports = {
 
                     const embed = new Discord.MessageEmbed()
                         .setTitle(`COVID-19 Stats for **${countries}**`)
+<<<<<<< HEAD
+=======
+                        .setColor('#DC143C')                        
+>>>>>>> jsmerge
                         .addField('Confirmed Cases', confirmed)
                         .addField('Recovered', recovered)
                         .addField('Deaths', deaths)

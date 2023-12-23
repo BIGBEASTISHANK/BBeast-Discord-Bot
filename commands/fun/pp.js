@@ -11,9 +11,14 @@ module.exports = {
         const ppsize = alphabet.repeat(Math.floor(Math.random() * randomnumber))
 
         const ppcalc = new Discord.MessageEmbed()
+<<<<<<< HEAD
             .setColor('#00f2ff')
             .setTitle(`peepee size machine`).setDescription(`${author}'s pp \n 8${ppsize}D`)
             .setFooter(`yes, I stole this machine from Mito`)
+=======
+            .setColor('RANDOM')
+            .setTitle(`peepee size machine`).setDescription(`${author}'s pp \n 8${ppsize}D`)
+>>>>>>> jsmerge
         message.channel.send(ppcalc);
 
     }
