@@ -17,7 +17,10 @@ token = os.getenv("TOKEN")
 status = discord.Status.dnd
 activity = discord.Game("with discord servers 😈")
 
-client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), help_command=None, intents=discord.Intents.default())
+intent = discord.Intents.default()
+intent.message_content = True
+
+client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), help_command=None, intents=intent)
 
 # File locations
 event_path = "./events/"
