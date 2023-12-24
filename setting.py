@@ -1,6 +1,5 @@
 # Importing Libsimport discord
 import os
-import time
 import discord
 from random import *
 from discord.utils import get
@@ -18,8 +17,7 @@ token = os.getenv("TOKEN")
 status = discord.Status.dnd
 activity = discord.Game("with discord servers 😈")
 
-client = commands.Bot(
-    command_prefix=commands.when_mentioned_or(prefix), help_command=None)
+client = commands.Bot(command_prefix=commands.when_mentioned_or(prefix), help_command=None, intents=discord.Intents.default())
 
 # File locations
 event_path = "./events/"
