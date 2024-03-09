@@ -46,8 +46,8 @@ int main()
 
       // Sending msg
       dpp::message msg(event.command.channel_id, embed);
-      event.reply("");
-      bot.message_create(msg);
+      event.reply("goodnight");
+      //bot.message_create(msg);
     }});
 
   // On ready event
