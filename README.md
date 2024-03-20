@@ -8,3 +8,6 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 
 ## Development Started: November 22, 2023
 ## Development Paused:  November 27, 2023
+
+> [!Note]
+> The project is currently being temporarily archived. It might reopen in the future or it might not.
