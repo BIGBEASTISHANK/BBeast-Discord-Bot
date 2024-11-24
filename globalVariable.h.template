@@ -2,16 +2,15 @@
 
 // Includes
 #include <ctime>
-#include <dpp/dpp.h>
 #include <iomanip>
-#include <iostream>
 #include <sstream>
+#include <iostream>
+#include <dpp/dpp.h>
 
 // Namespace
 namespace bbGlobalVariable {
 // Variables
-const std::string TOKEN =
-    "you troken here";
+const std::string TOKEN = "";
 
 const int EMBED_COLOR = 0x00f2ff;
 

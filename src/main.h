@@ -1,6 +1,12 @@
 #pragma once
 
 // Includes
+#include <string>
+#include <cstdint>
+#include <dpp/message.h>
+#include <dpp/cluster.h>
+#include <dpp/appcommand.h>
+#include <dpp/dispatcher.h>
 #include "../globalVariable.h"
 
 // Namespaces

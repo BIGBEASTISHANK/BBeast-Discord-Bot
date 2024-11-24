@@ -1,7 +1,10 @@
-# Header Files
+# Global header
 globalVariable.h
 
-# Others
-.vscode/
-bot
+# Make
+/obj
 dppbot
+*.o
+
+# Others
+/.vscode
