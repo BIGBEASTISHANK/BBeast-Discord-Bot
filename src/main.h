@@ -2,12 +2,11 @@
 
 // Includes
 #include <string>
+#include <variant>
 #include <cstdint>
-#include <dpp/message.h>
-#include <dpp/cluster.h>
-#include <dpp/appcommand.h>
-#include <dpp/dispatcher.h>
+#include <cstdint>
 #include "../globalVariable.h"
+
 
 // Namespaces
 using namespace std;
