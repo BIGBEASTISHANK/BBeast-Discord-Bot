@@ -9,7 +9,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [ ] Unban
 	- [ ] Kick
 	- [ ] slowmode
-	- [ ] Ban
+	- [x] Ban
 	- [ ] createtextchannel
 	- [ ] createvoicechanne
 	- [ ] nickname

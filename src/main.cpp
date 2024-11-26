@@ -1,12 +1,4 @@
 #include "./main.h"
-#include <cstdint>
-#include <dpp/appcommand.h>
-#include <dpp/ban.h>
-#include <dpp/message.h>
-#include <dpp/permissions.h>
-#include <dpp/snowflake.h>
-#include <string>
-#include <variant>
 
 int main() {
   // Instantiating bot
