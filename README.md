@@ -18,7 +18,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [ ] createvoicechanne - Create a new voice channel in current catagory
 	- [ ] nickname - Change nickname for the given user
 - Utility
-	- [ ] help - Shows all the command avaliable
+	- [ ] help - Shows all the command available
 	- [ ] reportbug - Reports bugs in the bot
 	- [x] ~Ping - Give response time of the bot~
 - Fun
