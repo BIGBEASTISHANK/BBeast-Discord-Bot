@@ -9,8 +9,8 @@
 #include <dpp/ban.h>
 #include <dpp/message.h>
 #include <dpp/cluster.h>
-#include <dpp/appcommand.h>
 #include <dpp/snowflake.h>
+#include <dpp/appcommand.h>
 #include <dpp/dispatcher.h>
 #include <dpp/permissions.h>
 
