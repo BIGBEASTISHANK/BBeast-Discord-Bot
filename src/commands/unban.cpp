@@ -4,6 +4,7 @@ void unbanCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
   // Getting User Id
   dpp::snowflake userId = get<dpp::snowflake>(event.get_parameter("user_id"));
 
+  // Unbanning user
   bot.guild_ban_delete(
       event.command.guild_id, userId,
       [event](const dpp::confirmation_callback_t &callback) {

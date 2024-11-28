@@ -52,8 +52,8 @@ void banCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
                 .add_field("Banned User ID", to_string(userToBan), true)
                 .add_field("Banned By", bannedByMsg, true)
                 .add_field("Reason", reasonToBan, false)
-                .add_field("Deleted Message Days", to_string(daysToDelete),
-                           true)
+                .add_field("Deleted Message Days",
+                           to_string(daysToDelete / 86400), true)
                 .set_timestamp(bbGlobalVariable::CurrentTime);
 
         // Send confirmation message

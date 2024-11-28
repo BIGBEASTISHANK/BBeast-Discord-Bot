@@ -4,6 +4,7 @@
 #include "commands/ban.h"
 #include "commands/clear.h"
 #include "commands/confess.h"
+#include "commands/kick.h"
 #include "commands/ping.h"
 #include "commands/unban.h"
 
@@ -16,14 +17,25 @@ int main() {
 
   // On slashcommand event
   bot.on_slashcommand([&bot](const dpp::slashcommand_t &event) {
+    ///////////////////////
+    // Utilities Section //
+    ///////////////////////
     // Ping command
     if (event.command.get_command_name() == "ping") {
       pingCommand(event, bot);
     }
+
+    /////////////////////
+    // General section //
+    /////////////////////
     // Confess Command
     else if (event.command.get_command_name() == "confess") {
       confessCommand(event, bot);
     }
+
+    ////////////////////////
+    // Moderation Section //
+    ////////////////////////
     // Clear command
     else if (event.command.get_command_name() == "clear") {
       clearCommand(event, bot);
@@ -35,40 +47,51 @@ int main() {
     // unban command
     else if (event.command.get_command_name() == "unban") {
       unbanCommand(event, bot);
+    } else if (event.command.get_command_name() == "kick") {
+      kickCommand(event, bot);
     }
   });
 
   // On ready event
   bot.on_ready([&bot](const dpp::ready_t &event) {
+    // Registring slash command
     if (dpp::run_once<struct clear_bot_commands>()) {
-      // Registring slash command
-
+      ///////////////////////
+      // Utilities Section //
+      ///////////////////////
       // Ping
       dpp::slashcommand ping("ping", "Get ping of bot", bot.me.id);
 
+      /////////////////////
+      // General section //
+      /////////////////////
       // Confess
       dpp::slashcommand confess("confess", "Confess your feelings!", bot.me.id);
       confess.add_option(dpp::command_option(
           dpp::co_string, "message",
           "Give a message to send it anonymously in this channel!", true));
 
+      ////////////////////////
+      // Moderation Section //
+      ////////////////////////
       // Clear
       dpp::slashcommand clear("clear", "Clear message in channel!", bot.me.id);
-      clear.add_option(dpp::command_option(
-          dpp::co_integer, "amount", "Give amount of message to clear", true));
-      clear.set_default_permissions(dpp::p_manage_messages);
+      clear
+          .add_option(dpp::command_option(dpp::co_integer, "amount",
+                                          "Give amount of message to clear",
+                                          true))
+          .set_default_permissions(dpp::p_manage_messages);
 
       // Ban
       dpp::slashcommand ban("ban", "Bans a user from current server!",
                             bot.me.id);
       ban.add_option(dpp::command_option(dpp::co_user, "user",
-                                         "Mention user to ban!", true));
-      ban.add_option(dpp::command_option(dpp::co_string, "reason",
-                                         "Reason to ban!", false));
-      ban.add_option(dpp::command_option(
-          dpp::co_integer, "days",
-          "Delete message days old!", false));
-      ban.set_default_permissions(dpp::p_ban_members);
+                                         "Mention user to ban!", true))
+          .add_option(dpp::command_option(dpp::co_string, "reason",
+                                          "Reason to ban!", false))
+          .add_option(dpp::command_option(dpp::co_integer, "days",
+                                          "Delete message days old!", false))
+          .set_default_permissions(dpp::p_ban_members);
 
       // Unban
       dpp::slashcommand unban("unban", "Unban user from this server!",
@@ -77,9 +100,20 @@ int main() {
                                            "Enter user id to unban!", true));
       unban.set_default_permissions(dpp::p_ban_members);
 
+      // Kick
+      dpp::slashcommand kick("kick", "Kick user from server!", bot.me.id);
+      kick.add_option(dpp::command_option(dpp::co_user, "user",
+                                          "Mention user to kick!", true))
+          .add_option(dpp::command_option(dpp::co_string, "reason",
+                                          "Reason to kick the user!", false))
+          .set_default_permissions(dpp::p_kick_members);
+
+      /////////////////////
+      // Logical Section //
+      /////////////////////
       // Creating bulk command
       bot.guild_bulk_command_create(
-          {ping, confess, clear, ban, unban}, 791350584597807137,
+          {ping, confess, clear, ban, unban, kick}, 791350584597807137,
           [&bot](const dpp::confirmation_callback_t &callback) {
             if (callback.is_error()) {
               cerr << "Error registering commands: "
