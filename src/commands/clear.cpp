@@ -42,7 +42,7 @@ void clearCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
             [event,
              amountToClean](const dpp::confirmation_callback_t &del_callback) {
               if (del_callback.is_error()) {
-                event.reply(dpp::message("Failed to delete messages!")
+                event.reply(dpp::message("Failed to delete messages, check bot's permission!")
                                 .set_flags(dpp::m_ephemeral));
                 return;
               }

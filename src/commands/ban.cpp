@@ -13,11 +13,11 @@ void banCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
   }
 
   // Delete message time
-  int64_t secondsToDelete;
+  int64_t daysToDelete;
   try {
-    secondsToDelete = get<int64_t>(event.get_parameter("seconds"));
+    daysToDelete = get<int64_t>(event.get_parameter("days")) * 86400;
   } catch (const bad_variant_access &) {
-    secondsToDelete = 0;
+    daysToDelete = 0;
   }
 
   // If trying to self ban
@@ -29,9 +29,9 @@ void banCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
 
   // Ban cluster
   bot.guild_ban_add(
-      event.command.guild_id, userToBan, secondsToDelete,
+      event.command.guild_id, userToBan, daysToDelete,
       [&bot, event, userToBan, reasonToBan,
-       secondsToDelete](const dpp::confirmation_callback_t &callback) {
+       daysToDelete](const dpp::confirmation_callback_t &callback) {
         if (callback.is_error()) {
           // Ban failed
           event.reply(dpp::message("Failed to ban the user. Check bot "
@@ -52,7 +52,7 @@ void banCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
                 .add_field("Banned User ID", to_string(userToBan), true)
                 .add_field("Banned By", bannedByMsg, true)
                 .add_field("Reason", reasonToBan, false)
-                .add_field("Deleted Message Days", to_string(secondsToDelete),
+                .add_field("Deleted Message Days", to_string(daysToDelete),
                            true)
                 .set_timestamp(bbGlobalVariable::CurrentTime);
 

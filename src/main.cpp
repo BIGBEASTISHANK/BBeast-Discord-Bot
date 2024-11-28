@@ -2,9 +2,10 @@
 
 // Command headers
 #include "commands/ban.h"
-#include "commands/ping.h"
 #include "commands/clear.h"
 #include "commands/confess.h"
+#include "commands/ping.h"
+#include "commands/unban.h"
 
 int main() {
   // Instantiating bot
@@ -30,6 +31,10 @@ int main() {
     // Ban Command
     else if (event.command.get_command_name() == "ban") {
       banCommand(event, bot);
+    }
+    // unban command
+    else if (event.command.get_command_name() == "unban") {
+      unbanCommand(event, bot);
     }
   });
 
@@ -61,14 +66,28 @@ int main() {
       ban.add_option(dpp::command_option(dpp::co_string, "reason",
                                          "Reason to ban!", false));
       ban.add_option(dpp::command_option(
-          dpp::co_integer, "seconds",
-          "How many seconds to delete messages for!", false));
+          dpp::co_integer, "days",
+          "Delete message days old!", false));
       ban.set_default_permissions(dpp::p_ban_members);
+
+      // Unban
+      dpp::slashcommand unban("unban", "Unban user from this server!",
+                              bot.me.id);
+      unban.add_option(dpp::command_option(dpp::co_user, "user_id",
+                                           "Enter user id to unban!", true));
+      unban.set_default_permissions(dpp::p_ban_members);
 
       // Creating bulk command
       bot.guild_bulk_command_create(
-          {ping, confess, clear, ban},
-          791350584597807137); // Creating slash command
+          {ping, confess, clear, ban, unban}, 791350584597807137,
+          [&bot](const dpp::confirmation_callback_t &callback) {
+            if (callback.is_error()) {
+              cerr << "Error registering commands: "
+                   << callback.get_error().message << endl;
+            } else {
+              cout << "Commands registered successfully" << endl;
+            }
+          });
     };
 
     // Outputing when bot is ready
