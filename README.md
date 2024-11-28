@@ -6,7 +6,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 ## Progress report
 - Modration
 	- [x] clear
-	- [ ] Unban
+	- [x] Unban
 	- [ ] Kick
 	- [ ] slowmode
 	- [x] Ban
