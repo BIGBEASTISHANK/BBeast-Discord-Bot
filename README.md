@@ -1,10 +1,6 @@
 # Discord Bot Development History
 
-## JavaScript Version
-
-- **Development Period:**
-  - Started: May 13, 2020
-  - Ended: April 22, 2021
+## JavaScript Version 
 
 ## Update (2023)
 
