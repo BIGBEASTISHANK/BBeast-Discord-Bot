@@ -1,17 +1,9 @@
-#pragma once
+#include "globalVariable.h"
+#include "../env.h"
 
-// Includes
-#include <ctime>
-#include <iomanip>
-#include <sstream>
-#include <iostream>
-#include <dpp/dpp.h>
-
-// Namespace
 namespace bbGlobalVariable {
-// Variables
-const std::string TOKEN = "";
 
+const std::string TOKEN = bbenv::TOKEN; // Enter your token here
 const int EMBED_COLOR = 0x00f2ff;
 
 std::chrono::system_clock::time_point now = std::chrono::system_clock::now();

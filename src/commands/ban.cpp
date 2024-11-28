@@ -1,0 +1,67 @@
+#include "ban.h"
+
+void banCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
+  // User to ban
+  dpp::snowflake userToBan = get<dpp::snowflake>(event.get_parameter("user"));
+
+  // Reason to ban
+  string reasonToBan;
+  try {
+    reasonToBan = get<string>(event.get_parameter("reason"));
+  } catch (const bad_variant_access &) {
+    reasonToBan = "No Reason, just like that!!";
+  }
+
+  // Delete message time
+  int64_t secondsToDelete;
+  try {
+    secondsToDelete = get<int64_t>(event.get_parameter("seconds"));
+  } catch (const bad_variant_access &) {
+    secondsToDelete = 0;
+  }
+
+  // If trying to self ban
+  if (userToBan == event.command.member.user_id || userToBan == bot.me.id) {
+    event.reply(dpp::message("You cannot ban yourself or the bot!")
+                    .set_flags(dpp::m_ephemeral));
+    return;
+  }
+
+  // Ban cluster
+  bot.guild_ban_add(
+      event.command.guild_id, userToBan, secondsToDelete,
+      [&bot, event, userToBan, reasonToBan,
+       secondsToDelete](const dpp::confirmation_callback_t &callback) {
+        if (callback.is_error()) {
+          // Ban failed
+          event.reply(dpp::message("Failed to ban the user. Check bot "
+                                   "permissions and user status.")
+                          .set_flags(dpp::m_ephemeral));
+          return;
+        }
+
+        string bannedByMsg =
+            "<@" + to_string(event.command.member.user_id) + ">";
+
+        // Create an embed for ban confirmation
+        dpp::embed embed =
+            dpp::embed()
+                .set_color(bbGlobalVariable::EMBED_COLOR)
+                .set_title("User Banned")
+                .set_description("A user has been banned from the server.")
+                .add_field("Banned User ID", to_string(userToBan), true)
+                .add_field("Banned By", bannedByMsg, true)
+                .add_field("Reason", reasonToBan, false)
+                .add_field("Deleted Message Days", to_string(secondsToDelete),
+                           true)
+                .set_timestamp(bbGlobalVariable::CurrentTime);
+
+        // Send confirmation message
+        dpp::message msg(event.command.channel_id, embed);
+        bot.message_create(msg);
+
+        // Ephemeral reply to the command user
+        event.reply(dpp::message("User successfully banned!")
+                        .set_flags(dpp::m_ephemeral));
+      });
+}

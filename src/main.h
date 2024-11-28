@@ -5,7 +5,7 @@
 #include <variant>
 #include <cstdint>
 #include <cstdint>
-#include "../globalVariable.h"
+#include "globalVariable.h"
 
 
 // Namespaces

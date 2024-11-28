@@ -1,5 +1,5 @@
 # Global header
-globalVariable.h
+env*
 
 # Make
 /obj
