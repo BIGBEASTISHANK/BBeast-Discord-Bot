@@ -5,6 +5,7 @@
 #include "commands/clear.h"
 #include "commands/confess.h"
 #include "commands/createtextchannel.h"
+#include "commands/createvoicechannel.h"
 #include "commands/kick.h"
 #include "commands/ping.h"
 #include "commands/unban.h"
@@ -55,6 +56,10 @@ int main() {
     // Create Text Channel command
     else if (event.command.get_command_name() == "createtextchannel") {
       createTextChannelCommand(event, bot);
+    }
+    // Create voice channel command
+    else if (event.command.get_command_name() == "createvoicechannel") {
+      createVoiceChannelCommand(event, bot);
     }
   });
 
@@ -114,7 +119,7 @@ int main() {
                                           "Reason to kick the user!", false))
           .set_default_permissions(dpp::p_kick_members);
 
-      // Slowmode
+      // Create text channel
       dpp::slashcommand createTextChannel(
           "createtextchannel", "Create a text channel in current catagory!",
           bot.me.id);
@@ -122,17 +127,28 @@ int main() {
           .add_option(dpp::command_option(dpp::co_string, "name",
                                           "Enter name of the channel!", true))
           .add_option(dpp::command_option(dpp::co_string, "topic",
-                                          "What's the topic of this channel!", false))
+                                          "What's the topic of this channel!",
+                                          false))
           .add_option(dpp::command_option(dpp::co_boolean, "nsfw",
                                           "Is it nsfw?", false))
           .set_default_permissions(dpp::p_manage_channels);
+
+      dpp::slashcommand createVoiceChannel(
+          "createvoicechannel", "Create a voice channel in current catagory!",
+          bot.me.id);
+      createVoiceChannel
+          .add_option(dpp::command_option(dpp::co_string, "name",
+                                          "Enter name of the channel!", true))
+          .add_option(dpp::command_option(dpp::co_boolean, "nsfw",
+                                          "Is this channel nsfw?", false));
 
       /////////////////////
       // Logical Section //
       /////////////////////
       // Creating bulk command
       bot.guild_bulk_command_create(
-          {ping, confess, clear, ban, unban, kick, createTextChannel},
+          {ping, confess, clear, ban, unban, kick, createTextChannel,
+           createVoiceChannel},
           791350584597807137,
           [&bot](const dpp::confirmation_callback_t &callback) {
             if (callback.is_error()) {

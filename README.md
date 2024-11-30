@@ -14,8 +14,8 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [x] ~Kick - Kicks user from the server~
 	- [ ] slowmode - Enable slowmode in the server
 	- [x] ~Ban - Ban user in the server~
-	- [ ] createtextchannel - Create a new text channel in current catagory
-	- [ ] createvoicechanne - Create a new voice channel in current catagory
+	- [x] createtextchannel - Create a new text channel in current catagory
+	- [x] createvoicechanne - Create a new voice channel in current catagory
 	- [ ] nickname - Change nickname for the given user
 - Utility
 	- [ ] help - Shows all the command available

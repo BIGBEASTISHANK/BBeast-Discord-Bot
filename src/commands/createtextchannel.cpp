@@ -30,14 +30,32 @@ void createTextChannelCommand(const dpp::slashcommand_t &event,
   newCreateChannel.set_parent_id(event.command.get_channel().parent_id);
   newCreateChannel.set_nsfw(isNsfw);
 
-  bot.channel_create(
-      newCreateChannel,
-      [event, channelName](const dpp::confirmation_callback_t &callback) {
-        if (callback.is_error())
-          event.reply(dpp::message("Please check bot's permission!")
-                          .set_flags(dpp::m_ephemeral));
-        else
-          event.reply(dpp::message("Channel created successfully!")
-                          .set_flags(dpp::m_ephemeral));
-      });
+  // Creating channel
+  bot.channel_create(newCreateChannel, [event, channelName, isNsfw,
+                                        channelTopic](
+                                           const dpp::confirmation_callback_t
+                                               &callback) {
+    if (callback.is_error())
+      event.reply(dpp::message("Please check bot's permission!")
+                      .set_flags(dpp::m_ephemeral));
+    else {
+      dpp::embed channelEmbed =
+          dpp::embed()
+              .set_color(bbGlobalVariable::EMBED_COLOR)
+              .set_title("🆕 Text Channel Created")
+              .set_description(
+                  "A new text channel has been successfully created!")
+              .add_field("Channel Name", channelName, true)
+              .add_field("NSFW", isNsfw ? "Yes" : "No", true)
+              .add_field("Channel Topic", channelTopic, false)
+              .add_field("Created By",
+                         "<@" + to_string(event.command.member.user_id) + ">",
+                         true)
+              .set_timestamp(time(nullptr));
+
+      // Reply with the embed
+      event.reply(
+          dpp::message().add_embed(channelEmbed));
+    }
+  });
 }
