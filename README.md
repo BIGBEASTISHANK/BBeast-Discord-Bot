@@ -12,7 +12,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [x] ~clear - Clears the message by `amount`~
 	- [x] ~Unban - Unban user from server with `user_id`~
 	- [x] ~Kick - Kicks user from the server~
-	- [ ] slowmode - Enable slowmode in the server
+	- [x] slowmode - Enable slowmode in the server
 	- [x] ~Ban - Ban user in the server~
 	- [x] createtextchannel - Create a new text channel in current catagory
 	- [x] createvoicechanne - Create a new voice channel in current catagory

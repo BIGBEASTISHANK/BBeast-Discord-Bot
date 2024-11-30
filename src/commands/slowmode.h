@@ -5,4 +5,4 @@
 
 using namespace std;
 
-void clearCommand(const dpp::slashcommand_t &event, dpp::cluster &bot);
+void slowmodeCommand(const dpp::slashcommand_t &event, dpp::cluster &bot);

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../globalVariable.h"
 
 using namespace std;

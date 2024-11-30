@@ -1,7 +1,4 @@
 #include "createvoicechannel.h"
-#include <dpp/message.h>
-#include <dpp/restresults.h>
-#include <variant>
 
 void createVoiceChannelCommand(const dpp::slashcommand_t &event,
                                dpp::cluster &bot) {

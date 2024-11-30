@@ -8,6 +8,7 @@
 #include "commands/createvoicechannel.h"
 #include "commands/kick.h"
 #include "commands/ping.h"
+#include "commands/slowmode.h"
 #include "commands/unban.h"
 #include <dpp/appcommand.h>
 
@@ -60,6 +61,10 @@ int main() {
     // Create voice channel command
     else if (event.command.get_command_name() == "createvoicechannel") {
       createVoiceChannelCommand(event, bot);
+    }
+    // Slowmode command
+    else if (event.command.get_command_name() == "slowmode") {
+      slowmodeCommand(event, bot);
     }
   });
 
@@ -133,6 +138,7 @@ int main() {
                                           "Is it nsfw?", false))
           .set_default_permissions(dpp::p_manage_channels);
 
+      // Create Voice Channel
       dpp::slashcommand createVoiceChannel(
           "createvoicechannel", "Create a voice channel in current catagory!",
           bot.me.id);
@@ -140,7 +146,18 @@ int main() {
           .add_option(dpp::command_option(dpp::co_string, "name",
                                           "Enter name of the channel!", true))
           .add_option(dpp::command_option(dpp::co_boolean, "nsfw",
-                                          "Is this channel nsfw?", false));
+                                          "Is this channel nsfw?", false))
+          .set_default_permissions(dpp::p_manage_channels);
+
+      // Slowmode
+      dpp::slashcommand slowmode("slowmode", "Add slowmode to the channel!",
+                                 bot.me.id);
+      slowmode
+          .add_option(dpp::command_option(
+              dpp::co_integer, "amount",
+              "Enter the amount of slowdown n seconds!", true))
+          .set_default_permissions(dpp::p_manage_channels)
+          .set_default_permissions(dpp::p_manage_messages);
 
       /////////////////////
       // Logical Section //
@@ -148,7 +165,7 @@ int main() {
       // Creating bulk command
       bot.guild_bulk_command_create(
           {ping, confess, clear, ban, unban, kick, createTextChannel,
-           createVoiceChannel},
+           createVoiceChannel, slowmode},
           791350584597807137,
           [&bot](const dpp::confirmation_callback_t &callback) {
             if (callback.is_error()) {
