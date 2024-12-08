@@ -7,10 +7,10 @@
 #include "commands/createtextchannel.h"
 #include "commands/createvoicechannel.h"
 #include "commands/kick.h"
+#include "commands/nickname.h"
 #include "commands/ping.h"
 #include "commands/slowmode.h"
 #include "commands/unban.h"
-#include <dpp/appcommand.h>
 
 int main() {
   // Instantiating bot
@@ -65,6 +65,10 @@ int main() {
     // Slowmode command
     else if (event.command.get_command_name() == "slowmode") {
       slowmodeCommand(event, bot);
+    }
+    // Nickname Command
+    else if (event.command.get_command_name() == "nickname") {
+      nicknameCommand(event, bot);
     }
   });
 
@@ -159,13 +163,24 @@ int main() {
           .set_default_permissions(dpp::p_manage_channels)
           .set_default_permissions(dpp::p_manage_messages);
 
+      // Nickname
+      dpp::slashcommand nickname("nickname", "Change nickname of user!",
+                                 bot.me.id);
+      nickname
+          .add_option(dpp::command_option(
+              dpp::co_user, "user",
+              "Whom do you want to change the nickname for?", true))
+          .add_option(dpp::command_option(dpp::co_string, "nickname",
+                                          "Enter new and sexy nickname!", true))
+          .set_default_permissions(dpp::p_manage_nicknames);
+
       /////////////////////
       // Logical Section //
       /////////////////////
       // Creating bulk command
       bot.guild_bulk_command_create(
           {ping, confess, clear, ban, unban, kick, createTextChannel,
-           createVoiceChannel, slowmode},
+           createVoiceChannel, slowmode, nickname},
           791350584597807137,
           [&bot](const dpp::confirmation_callback_t &callback) {
             if (callback.is_error()) {

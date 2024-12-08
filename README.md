@@ -16,7 +16,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [x] ~Ban - Ban user in the server~
 	- [x] ~createtextchannel - Create a new text channel in current catagory~
 	- [x] ~createvoicechanne - Create a new voice channel in current catagory~
-	- [ ] nickname - Change nickname for the given user
+	- [x] nickname - Change nickname for the given user
 - Utility
 	- [ ] help - Shows all the command available
 	- [ ] reportbug - Reports bugs in the bot
