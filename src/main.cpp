@@ -1,5 +1,6 @@
 #include "main.h"
 #include "help.h"
+#include <dpp/appcommand.h>
 
 // Type alias for command handler function
 using CommandHandler =
@@ -24,7 +25,10 @@ int main() {
       {"createtextchannel", createTextChannelCommand},
       {"createvoicechannel", createVoiceChannelCommand},
       {"slowmode", slowmodeCommand},
-      {"nickname", nicknameCommand}};
+      {"nickname", nicknameCommand},
+      {"avatar", avatarCommand},
+      {"calculator", calculatorCommand},
+  };
 
   // On slashcommand event
   bot.on_slashcommand(
@@ -52,8 +56,7 @@ int main() {
       // Utilities Section //
       ///////////////////////
       // Help
-      dpp::slashcommand help("help", "Shows all command avaliable!",
-                             bot.me.id);
+      dpp::slashcommand help("help", "Shows all command avaliable!", bot.me.id);
       // Ping
       dpp::slashcommand ping("ping", "Get ping of bot", bot.me.id);
 
@@ -65,6 +68,21 @@ int main() {
       confess.add_option(dpp::command_option(
           dpp::co_string, "message",
           "Give a message to send it anonymously in this channel!", true));
+
+      // Avatar
+      dpp::slashcommand avatar("avatar", "Get user avatar!", bot.me.id);
+      avatar.add_option(dpp::command_option(
+          dpp::co_user, "user", "Mention user to get avatar of!", false));
+
+      /////////////////
+      // Fun Section //
+      /////////////////
+      // Calculator
+      dpp::slashcommand calculator("calculator", "Evaluates the expression!",
+                                   bot.me.id);
+      calculator.add_option(
+          dpp::command_option(dpp::co_string, "expression",
+                              "Enter the expression to evaluate!", true));
 
       ////////////////////////
       // Moderation Section //
@@ -160,9 +178,11 @@ int main() {
           ping,
           unban,
           clear,
+          avatar,
           confess,
           slowmode,
           nickname,
+          calculator,
           createTextChannel,
           createVoiceChannel,
       };

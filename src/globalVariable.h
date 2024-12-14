@@ -35,3 +35,5 @@ extern const time_t CurrentTime;
 #include "commands/ping.h"
 #include "commands/slowmode.h"
 #include "commands/unban.h"
+#include "commands/avatar.h"
+#include "commands/calculator.h"

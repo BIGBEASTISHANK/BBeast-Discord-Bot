@@ -5,7 +5,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 
 > [!Note]
 > Install [d++](https://dpp.dev/) library for this bot. Use make file to compile bot. 
-> create a `env.h` file to store you bot token. 
+> create a `env.h` in root file to store you bot token. 
 
 ## Progress report
 - Moderation
@@ -18,12 +18,12 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [x] ~createvoicechannel - Create a new voice channel in current catagory~
 	- [x] nickname - Change nickname for the given user
 - Utility
-	- [ ] help - Shows all the command available
+	- [x] help - Shows all the command available
 	- [ ] reportbug - Reports bugs in the bot
 	- [x] ~Ping - Give response time of the bot~
 - Fun
 	- [ ] PP - Calculate size of your or given users PP
-	- [ ] calculator - Just a basic calculator for person who don't touch grass
+	- [x] calculator - Just a basic calculator for person who don't touch grass
 	- [ ] meme - Shows random meme from dank memer
 - Music
 	- [ ] Disconnect - Disconnect from voice channel

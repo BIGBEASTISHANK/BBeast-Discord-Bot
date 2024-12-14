@@ -23,6 +23,7 @@ void helpCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
                      "`clear` | `unban` | `kick` | `slowmode` |  `ban` | "
                      "`createtextchannel` | `createvoicechannel` | `nickname`",
                      false)
+          .add_field("**❯ Fun**", "`calculator`", false)
           .add_field("**❯ Utility**", "`ping` | `help`", false)
           .set_timestamp(bbGlobalVariable::CurrentTime);
 
