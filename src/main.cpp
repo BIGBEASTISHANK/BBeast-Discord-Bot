@@ -1,16 +1,9 @@
 #include "main.h"
+#include "help.h"
 
-// Command headers
-#include "commands/ban.h"
-#include "commands/clear.h"
-#include "commands/confess.h"
-#include "commands/createtextchannel.h"
-#include "commands/createvoicechannel.h"
-#include "commands/kick.h"
-#include "commands/nickname.h"
-#include "commands/ping.h"
-#include "commands/slowmode.h"
-#include "commands/unban.h"
+// Type alias for command handler function
+using CommandHandler =
+    function<void(const dpp::slashcommand_t &, dpp::cluster &)>;
 
 int main() {
   // Instantiating bot
@@ -19,66 +12,48 @@ int main() {
   // Logger
   bot.on_log(dpp::utility::cout_logger());
 
+  // Create a map of command names to their handler functions
+  unordered_map<string, CommandHandler> commandHandlers = {
+      {"help", helpCommand},
+      {"ping", pingCommand},
+      {"confess", confessCommand},
+      {"clear", clearCommand},
+      {"ban", banCommand},
+      {"unban", unbanCommand},
+      {"kick", kickCommand},
+      {"createtextchannel", createTextChannelCommand},
+      {"createvoicechannel", createVoiceChannelCommand},
+      {"slowmode", slowmodeCommand},
+      {"nickname", nicknameCommand}};
+
   // On slashcommand event
-  bot.on_slashcommand([&bot](const dpp::slashcommand_t &event) {
-    ///////////////////////
-    // Utilities Section //
-    ///////////////////////
-    // Ping command
-    if (event.command.get_command_name() == "ping") {
-      pingCommand(event, bot);
-    }
+  bot.on_slashcommand(
+      [&bot, &commandHandlers](const dpp::slashcommand_t &event) {
+        // Get the command name
+        string commandName = event.command.get_command_name();
 
-    /////////////////////
-    // General section //
-    /////////////////////
-    // Confess Command
-    else if (event.command.get_command_name() == "confess") {
-      confessCommand(event, bot);
-    }
+        // Find the corresponding handler
+        auto it = commandHandlers.find(commandName);
+        if (it != commandHandlers.end()) {
+          // Call the handler function if found
+          it->second(event, bot);
+        } else {
+          // Optional: Handle unknown commands
+          event.reply("Unknown command!");
+        }
+      });
 
-    ////////////////////////
-    // Moderation Section //
-    ////////////////////////
-    // Clear command
-    else if (event.command.get_command_name() == "clear") {
-      clearCommand(event, bot);
-    }
-    // Ban Command
-    else if (event.command.get_command_name() == "ban") {
-      banCommand(event, bot);
-    }
-    // unban command
-    else if (event.command.get_command_name() == "unban") {
-      unbanCommand(event, bot);
-    } else if (event.command.get_command_name() == "kick") {
-      kickCommand(event, bot);
-    }
-    // Create Text Channel command
-    else if (event.command.get_command_name() == "createtextchannel") {
-      createTextChannelCommand(event, bot);
-    }
-    // Create voice channel command
-    else if (event.command.get_command_name() == "createvoicechannel") {
-      createVoiceChannelCommand(event, bot);
-    }
-    // Slowmode command
-    else if (event.command.get_command_name() == "slowmode") {
-      slowmodeCommand(event, bot);
-    }
-    // Nickname Command
-    else if (event.command.get_command_name() == "nickname") {
-      nicknameCommand(event, bot);
-    }
-  });
-
-  // On ready event
+  // On ready event (rest of the code remains the same as in the original
+  // implementation)
   bot.on_ready([&bot](const dpp::ready_t &event) {
     // Registring slash command
     if (dpp::run_once<struct clear_bot_commands>()) {
       ///////////////////////
       // Utilities Section //
       ///////////////////////
+      // Help
+      dpp::slashcommand help("help", "Shows all command avaliable!",
+                             bot.me.id);
       // Ping
       dpp::slashcommand ping("ping", "Get ping of bot", bot.me.id);
 
@@ -178,10 +153,21 @@ int main() {
       // Logical Section //
       /////////////////////
       // Creating bulk command
+      vector<dpp::slashcommand> commandList = {
+          help,
+          ban,
+          kick,
+          ping,
+          unban,
+          clear,
+          confess,
+          slowmode,
+          nickname,
+          createTextChannel,
+          createVoiceChannel,
+      };
       bot.guild_bulk_command_create(
-          {ping, confess, clear, ban, unban, kick, createTextChannel,
-           createVoiceChannel, slowmode, nickname},
-          791350584597807137,
+          commandList, 791350584597807137,
           [&bot](const dpp::confirmation_callback_t &callback) {
             if (callback.is_error()) {
               cerr << "Error registering commands: "

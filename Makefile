@@ -18,6 +18,8 @@ TARGET = dppbot
 # Default target
 all: $(TARGET)
 
+run: $(TARGET) ; ./dppbot
+
 # Linking target
 $(TARGET): $(OBJECTS)
 	@echo "Linking object files into the final executable..."

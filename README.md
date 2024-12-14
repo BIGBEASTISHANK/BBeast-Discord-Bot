@@ -8,14 +8,14 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 > create a `env.h` file to store you bot token. 
 
 ## Progress report
-- Modration
+- Moderation
 	- [x] ~clear - Clears the message by `amount`~
 	- [x] ~Unban - Unban user from server with `user_id`~
 	- [x] ~Kick - Kicks user from the server~
 	- [x] ~slowmode - Enable slowmode in the server~
 	- [x] ~Ban - Ban user in the server~
 	- [x] ~createtextchannel - Create a new text channel in current catagory~
-	- [x] ~createvoicechanne - Create a new voice channel in current catagory~
+	- [x] ~createvoicechannel - Create a new voice channel in current catagory~
 	- [x] nickname - Change nickname for the given user
 - Utility
 	- [ ] help - Shows all the command available
