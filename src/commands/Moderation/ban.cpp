@@ -1,4 +1,5 @@
 #include "ban.h"
+#include <dpp/message.h>
 
 void banCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
   // User to ban
@@ -56,12 +57,13 @@ void banCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
                            to_string(daysToDelete / 86400), true)
                 .set_timestamp(bbGlobalVariable::CurrentTime);
 
-        // Send confirmation message
-        dpp::message msg(event.command.channel_id, embed);
-        bot.message_create(msg);
+        // DMing user why they have been banned
+        bot.direct_message_create(
+            userToBan, dpp::message("You have been banned from the server: `" +
+                                    event.command.get_guild().name +
+                                    "` \n Reason: **" + reasonToBan + "**"));
 
-        // Ephemeral reply to the command user
-        event.reply(dpp::message("User successfully banned!")
-                        .set_flags(dpp::m_ephemeral));
+        // Send confirmation message
+        event.reply(dpp::message().add_embed(embed));
       });
 }

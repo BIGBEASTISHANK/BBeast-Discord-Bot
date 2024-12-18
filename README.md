@@ -19,7 +19,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [x] nickname - Change nickname for the given user
 - Utility
 	- [x] help - Shows all the command available
-	- [ ] reportbug - Reports bugs in the bot
+	- [x] reportbug - Reports bugs in the bot
 	- [x] ~Ping - Give response time of the bot~
 	- [x] serverinfo - Info about server
 - Fun

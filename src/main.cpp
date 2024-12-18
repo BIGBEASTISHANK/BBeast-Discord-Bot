@@ -19,6 +19,7 @@ int main() {
       // Utility
       {"ping", pingCommand},
       {"serverinfo", serverInfoCommand},
+      {"reportbug", reportBugCommand},
       // General
       {"avatar", avatarCommand},
       {"confess", confessCommand},
@@ -66,6 +67,9 @@ int main() {
       dpp::slashcommand ping("ping", "Get ping of bot", bot.me.id);
       //ServerInfo
       dpp::slashcommand serverInfo("serverinfo", "Get info about server", bot.me.id);
+      // ReportBug
+      dpp::slashcommand reportBug("reportbug", "Report bugs in the bot", bot.me.id);
+      reportBug.add_option(dpp::command_option(dpp::co_string, "bug", "Enter the bug to report!", true));
 
       /////////////////////
       // General section //
@@ -182,6 +186,7 @@ int main() {
           // Utility
           help,
           ping,
+          reportBug,
           serverInfo,
           // General
           avatar,

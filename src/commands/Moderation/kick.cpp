@@ -45,6 +45,12 @@ void kickCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
                   .add_field("Reason", reason, false)
                   .set_timestamp(bbGlobalVariable::CurrentTime);
 
+          // DMing user why they have been kicked
+          bot.direct_message_create(
+              userId, dpp::message("You have been kicked from the server: `" +
+                                   event.command.get_guild().name +
+                                   "` \n Reason: **" + reason + "**"));
+
           // Reply with the embed
           event.reply(dpp::message().add_embed(kickEmbed));
         }

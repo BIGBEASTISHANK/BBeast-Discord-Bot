@@ -5,6 +5,7 @@ namespace bbGlobalVariable {
 
 const std::string TOKEN = bbenv::TOKEN;
 const int EMBED_COLOR = 0x00f2ff;
+const long int bugReportChannelId = 1177890074512338984;
 
 // Current time
 std::chrono::system_clock::time_point now = std::chrono::system_clock::now();

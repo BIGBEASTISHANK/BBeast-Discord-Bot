@@ -19,6 +19,7 @@ namespace bbGlobalVariable {
 // Variables
 extern const std::string TOKEN;
 extern const int EMBED_COLOR;
+extern const long int bugReportChannelId;
 
 // Current time
 extern std::chrono::system_clock::time_point now;
@@ -47,3 +48,4 @@ extern std::string botSourceCodeLink;
 
 #include "commands/Utility/ping.h"
 #include "commands/Utility/serverInfo.h"
+#include "commands/Utility/reportBug.h"
