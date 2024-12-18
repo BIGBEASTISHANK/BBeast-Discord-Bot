@@ -21,6 +21,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [x] help - Shows all the command available
 	- [ ] reportbug - Reports bugs in the bot
 	- [x] ~Ping - Give response time of the bot~
+	- [x] serverinfo - Info about server
 - Fun
 	- [ ] PP - Calculate size of your or given users PP
 	- [x] calculator - Just a basic calculator for person who don't touch grass
@@ -32,9 +33,6 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [ ] Play - Play song in voice channel
 - General
 	- [ ] avatar - Given pfp of your or given user
-	- [ ] info - Info about server
-	- [ ] Invite - Give Invite like to the server
-	- [ ] SupportServer - Gives support server invite link
 	- [x] ~Confess - Anonymously confess a message~
 
 ## Timestamp

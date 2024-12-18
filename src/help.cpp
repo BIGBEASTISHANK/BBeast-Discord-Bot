@@ -10,14 +10,16 @@ void helpCommand(const dpp::slashcommand_t &event, dpp::cluster &bot) {
           .set_color(bbGlobalVariable::EMBED_COLOR)
           .set_thumbnail(bot.me.get_avatar_url())
           .set_description("**<:invite:822410792804417567> [ "
-                           "Invite](https://discord.com/oauth2/"
-                           "authorize?client_id=1082013284628176937&"
-                           "permissions=8&integration_type=0&scope=bot)** | "
+                           "Invite](" +
+                           bbGlobalVariable::botInviteLink +
+                           ")** | "
                            "**<:support:822410788773691392> [ Support "
-                           "Server](https://bigbeastishank.com/discord)** |  "
+                           "Server](" +
+                           bbGlobalVariable::supportServerLink +
+                           ")** |  "
                            "**<:sourecode:822410789122080768> [ Source "
-                           "Code](https://github.com/BIGBEASTISHANK/"
-                           "BBeast-Discord-Bot/tree/c++)**")
+                           "Code](" +
+                           bbGlobalVariable::botSourceCodeLink + ")**")
           .add_field("**❯ General**", "`confess`", false)
           .add_field("**❯ Moderation**",
                      "`clear` | `unban` | `kick` | `slowmode` |  `ban` | "

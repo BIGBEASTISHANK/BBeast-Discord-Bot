@@ -3,9 +3,15 @@
 
 namespace bbGlobalVariable {
 
-const std::string TOKEN = bbenv::TOKEN; // Enter your token here
+const std::string TOKEN = bbenv::TOKEN;
 const int EMBED_COLOR = 0x00f2ff;
 
+// Current time
 std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
 const time_t CurrentTime = std::chrono::system_clock::to_time_t(now);
+
+// Link variables
+std::string botInviteLink = "https://discord.com/oauth2/authorize?client_id=1082013284628176937&permissions=8&integration_type=0&scope=bot";
+std::string supportServerLink = "https://bigbeastishank.com/discord";
+std::string botSourceCodeLink = "https://github.com/BIGBEASTISHANK/BBeast-Discord-Bot/tree/c++";
 } // namespace bbGlobalVariable

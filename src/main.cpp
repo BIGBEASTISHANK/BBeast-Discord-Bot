@@ -16,17 +16,22 @@ int main() {
   // Create a map of command names to their handler functions
   unordered_map<string, CommandHandler> commandHandlers = {
       {"help", helpCommand},
+      // Utility
       {"ping", pingCommand},
+      {"serverinfo", serverInfoCommand},
+      // General
+      {"avatar", avatarCommand},
       {"confess", confessCommand},
-      {"clear", clearCommand},
+      // Moderation
       {"ban", banCommand},
-      {"unban", unbanCommand},
       {"kick", kickCommand},
-      {"createtextchannel", createTextChannelCommand},
-      {"createvoicechannel", createVoiceChannelCommand},
+      {"clear", clearCommand},
+      {"unban", unbanCommand},
       {"slowmode", slowmodeCommand},
       {"nickname", nicknameCommand},
-      {"avatar", avatarCommand},
+      {"createtextchannel", createTextChannelCommand},
+      {"createvoicechannel", createVoiceChannelCommand},
+      // Fun
       {"calculator", calculatorCommand},
   };
 
@@ -59,6 +64,8 @@ int main() {
       dpp::slashcommand help("help", "Shows all command avaliable!", bot.me.id);
       // Ping
       dpp::slashcommand ping("ping", "Get ping of bot", bot.me.id);
+      //ServerInfo
+      dpp::slashcommand serverInfo("serverinfo", "Get info about server", bot.me.id);
 
       /////////////////////
       // General section //
@@ -172,19 +179,24 @@ int main() {
       /////////////////////
       // Creating bulk command
       vector<dpp::slashcommand> commandList = {
+          // Utility
           help,
-          ban,
-          kick,
           ping,
-          unban,
-          clear,
+          serverInfo,
+          // General
           avatar,
           confess,
+          // Moderation
+          ban,
+          kick,
+          clear,
+          unban,
           slowmode,
           nickname,
-          calculator,
           createTextChannel,
           createVoiceChannel,
+          // Fun
+          calculator,
       };
       bot.guild_bulk_command_create(
           commandList, 791350584597807137,

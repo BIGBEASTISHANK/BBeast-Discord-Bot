@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../globalVariable.h"
+#include "../../globalVariable.h"
 #include <dpp/dispatcher.h>
 
 using namespace std;

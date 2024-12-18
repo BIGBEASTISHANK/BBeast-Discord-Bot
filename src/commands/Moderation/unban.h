@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../globalVariable.h"
+#include "../../globalVariable.h"
 
 using namespace std;
 

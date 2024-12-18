@@ -20,20 +20,30 @@ namespace bbGlobalVariable {
 extern const std::string TOKEN;
 extern const int EMBED_COLOR;
 
+// Current time
 extern std::chrono::system_clock::time_point now;
 extern const time_t CurrentTime;
+
+// Link variable
+extern std::string botInviteLink;
+extern std::string supportServerLink;
+extern std::string botSourceCodeLink;
 } // namespace bbGlobalVariable
 
 // Command headers
-#include "commands/ban.h"
-#include "commands/clear.h"
-#include "commands/confess.h"
-#include "commands/createtextchannel.h"
-#include "commands/createvoicechannel.h"
-#include "commands/kick.h"
-#include "commands/nickname.h"
-#include "commands/ping.h"
-#include "commands/slowmode.h"
-#include "commands/unban.h"
-#include "commands/avatar.h"
-#include "commands/calculator.h"
+#include "commands/Fun/calculator.h"
+
+#include "commands/General/avatar.h"
+#include "commands/General/confess.h"
+
+#include "commands/Moderation/ban.h"
+#include "commands/Moderation/clear.h"
+#include "commands/Moderation/createtextchannel.h"
+#include "commands/Moderation/createvoicechannel.h"
+#include "commands/Moderation/kick.h"
+#include "commands/Moderation/nickname.h"
+#include "commands/Moderation/slowmode.h"
+#include "commands/Moderation/unban.h"
+
+#include "commands/Utility/ping.h"
+#include "commands/Utility/serverInfo.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "../globalVariable.h"
+#include "../../globalVariable.h"
 
 using namespace std;
 

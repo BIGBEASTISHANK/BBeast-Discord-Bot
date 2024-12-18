@@ -6,10 +6,13 @@ LDFLAGS = -ldpp
 # Directories
 SRC_DIR = ./src
 OBJ_DIR = ./obj
-COMMANDS_DIR = $(SRC_DIR)/commands
+FUN_COMMANDS_DIR = $(SRC_DIR)/commands/Fun
+GENERAL_COMMANDS_DIR = $(SRC_DIR)/commands/General
+MODERATION_COMMANDS_DIR = $(SRC_DIR)/commands/Moderation
+UTILITY_COMMANDS_DIR = $(SRC_DIR)/commands/Utility
 
 # Find all source files recursively
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(COMMANDS_DIR)/*.cpp)
+SOURCES = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(FUN_COMMANDS_DIR)/*.cpp) $(wildcard $(GENERAL_COMMANDS_DIR)/*.cpp) $(wildcard $(MODERATION_COMMANDS_DIR)/*.cpp) $(wildcard $(UTILITY_COMMANDS_DIR)/*.cpp)
 OBJECTS = $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 # Output binary
@@ -33,7 +36,22 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 # Compilation of command source files
-$(OBJ_DIR)/commands/%.o: $(COMMANDS_DIR)/%.cpp
+$(OBJ_DIR)/commands/Fun/%.o: $(FUN_COMMANDS_DIR)/%.cpp
+	@echo "Compiling command file $< into $@..."
+	@mkdir -p $(dir $@)  # Ensure the commands object directory exists
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/commands/General/%.o: $(GENERAL_COMMANDS_DIR)/%.cpp
+	@echo "Compiling command file $< into $@..."
+	@mkdir -p $(dir $@)  # Ensure the commands object directory exists
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/commands/Moderation/%.o: $(MODERATION_COMMANDS_DIR)/%.cpp
+	@echo "Compiling command file $< into $@..."
+	@mkdir -p $(dir $@)  # Ensure the commands object directory exists
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/commands/Utility/%.o: $(UTILITY_COMMANDS_DIR)/%.cpp
 	@echo "Compiling command file $< into $@..."
 	@mkdir -p $(dir $@)  # Ensure the commands object directory exists
 	@$(CC) $(CFLAGS) -c $< -o $@
