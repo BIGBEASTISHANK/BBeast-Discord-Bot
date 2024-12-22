@@ -37,7 +37,6 @@ int randomNumGen(int min, int max);
 #include "commands/Fun/pp.h"
 #include "commands/Fun/calculator.h"
 
-#include "commands/General/avatar.h"
 #include "commands/General/confess.h"
 
 #include "commands/Moderation/ban.h"

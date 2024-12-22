@@ -21,7 +21,6 @@ int main() {
       {"serverinfo", serverInfoCommand},
       {"reportbug", reportBugCommand},
       // General
-      {"avatar", avatarCommand},
       {"confess", confessCommand},
       // Moderation
       {"ban", banCommand},
@@ -66,11 +65,14 @@ int main() {
       dpp::slashcommand help("help", "Shows all command avaliable!", bot.me.id);
       // Ping
       dpp::slashcommand ping("ping", "Get ping of bot", bot.me.id);
-      //ServerInfo
-      dpp::slashcommand serverInfo("serverinfo", "Get info about server", bot.me.id);
+      // ServerInfo
+      dpp::slashcommand serverInfo("serverinfo", "Get info about server",
+                                   bot.me.id);
       // ReportBug
-      dpp::slashcommand reportBug("reportbug", "Report bugs in the bot", bot.me.id);
-      reportBug.add_option(dpp::command_option(dpp::co_string, "bug", "Enter the bug to report!", true));
+      dpp::slashcommand reportBug("reportbug", "Report bugs in the bot",
+                                  bot.me.id);
+      reportBug.add_option(dpp::command_option(
+          dpp::co_string, "bug", "Enter the bug to report!", true));
 
       /////////////////////
       // General section //
@@ -80,11 +82,6 @@ int main() {
       confess.add_option(dpp::command_option(
           dpp::co_string, "message",
           "Give a message to send it anonymously in this channel!", true));
-
-      // Avatar
-      dpp::slashcommand avatar("avatar", "Get user avatar!", bot.me.id);
-      avatar.add_option(dpp::command_option(
-          dpp::co_user, "user", "Mention user to get avatar of!", false));
 
       /////////////////
       // Fun Section //
@@ -98,8 +95,8 @@ int main() {
 
       // PP
       dpp::slashcommand pp("pp", "Calculate your PP!", bot.me.id);
-      pp.add_option(dpp::command_option(dpp::co_user, "user",
-                                        "Enter user to calculate their PP!", false));
+      pp.add_option(dpp::command_option(
+          dpp::co_user, "user", "Enter user to calculate their PP!", false));
 
       ////////////////////////
       // Moderation Section //
@@ -195,7 +192,6 @@ int main() {
           reportBug,
           serverInfo,
           // General
-          avatar,
           confess,
           // Moderation
           ban,
