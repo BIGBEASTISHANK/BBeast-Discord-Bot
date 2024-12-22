@@ -29,9 +29,12 @@ extern const time_t CurrentTime;
 extern std::string botInviteLink;
 extern std::string supportServerLink;
 extern std::string botSourceCodeLink;
+
+int randomNumGen(int min, int max);
 } // namespace bbGlobalVariable
 
 // Command headers
+#include "commands/Fun/pp.h"
 #include "commands/Fun/calculator.h"
 
 #include "commands/General/avatar.h"

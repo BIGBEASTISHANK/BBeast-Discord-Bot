@@ -33,6 +33,7 @@ int main() {
       {"createtextchannel", createTextChannelCommand},
       {"createvoicechannel", createVoiceChannelCommand},
       // Fun
+      {"pp", ppCommand},
       {"calculator", calculatorCommand},
   };
 
@@ -94,6 +95,11 @@ int main() {
       calculator.add_option(
           dpp::command_option(dpp::co_string, "expression",
                               "Enter the expression to evaluate!", true));
+
+      // PP
+      dpp::slashcommand pp("pp", "Calculate your PP!", bot.me.id);
+      pp.add_option(dpp::command_option(dpp::co_user, "user",
+                                        "Enter user to calculate their PP!", false));
 
       ////////////////////////
       // Moderation Section //
@@ -201,6 +207,7 @@ int main() {
           createTextChannel,
           createVoiceChannel,
           // Fun
+          pp,
           calculator,
       };
       bot.guild_bulk_command_create(

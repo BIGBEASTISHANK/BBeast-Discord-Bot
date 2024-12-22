@@ -23,7 +23,7 @@ This Discord bot, developed in C++, is designed to provide various functionaliti
 	- [x] ~Ping - Give response time of the bot~
 	- [x] serverinfo - Info about server
 - Fun
-	- [ ] PP - Calculate size of your or given users PP
+	- [x] PP - Calculate size of your or given users PP
 	- [x] calculator - Just a basic calculator for person who don't touch grass
 	- [ ] meme - Shows random meme from dank memer
 - Music
